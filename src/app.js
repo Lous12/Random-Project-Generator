@@ -100,8 +100,7 @@ ${p.description}
 
 Constraint: ${p.constraint.text}
 Features:
-${p.features.map((f)=>`- ${f}`).join('
-')}
+${p.features.map((f)=>`- ${f}`).join('\n')}
 
 Seed: ${p.seed}`; }
 async function copyText(text, successText) {
