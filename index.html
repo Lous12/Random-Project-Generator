@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A no-AI procedural random project idea generator for developers.">
+  <title>Random Project Generator v2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">NO AI · PROCEDURAL RULES + SEEDED RANDOM</p>
+        <h1>Random Project Generator</h1>
+        <p class="subtitle">Generate useful, technical, weird, cursed, or weekend-sized coding projects.</p>
+        <p id="poolStats" class="pool-stats"></p>
+      </div>
+      <button id="dailyBtn" class="ghost-btn" type="button">Daily project</button>
+    </header>
+
+    <section class="panel controls-panel" aria-label="Generator controls">
+      <div class="control-grid">
+        <label class="field"><span>Project type</span><select id="typeFilter"></select></label>
+        <label class="field"><span>Stack</span><select id="stackFilter"></select></label>
+        <label class="field"><span>Difficulty</span><select id="difficultyFilter">
+          <option value="any">Any</option><option value="beginner">Beginner</option><option value="easy">Easy</option><option value="medium" selected>Medium</option><option value="hard">Hard</option><option value="insane">Insane</option>
+        </select></label>
+        <label class="field"><span>Scope</span><select id="scopeFilter">
+          <option value="any">Any</option><option value="hour">1 hour</option><option value="evening">Evening</option><option value="weekend" selected>Weekend</option><option value="week">Week</option><option value="month">Month+</option>
+        </select></label>
+        <label class="field"><span>Mode</span><select id="modeFilter">
+          <option value="random">Random</option><option value="useful">Useful</option><option value="technical" selected>Technical</option><option value="creative">Creative</option><option value="cursed">Cursed</option><option value="useless">Completely useless</option>
+        </select></label>
+      </div>
+      <div class="chaos-row"><div class="chaos-head"><span>Chaos</span><strong id="chaosValue">45%</strong></div><input id="chaosRange" type="range" min="0" max="100" value="45" step="1"><div class="range-labels"><span>Normal</span><span>Cursed</span></div></div>
+      <div class="main-actions"><button id="generateBtn" class="primary-btn" type="button">🎲 Generate project</button><button id="surpriseBtn" class="secondary-btn" type="button">Surprise me</button></div>
+    </section>
+
+    <section id="resultPanel" class="panel result-panel" aria-live="polite">
+      <div class="result-topline"><div><p id="resultMeta" class="eyebrow"></p><h2 id="projectName">Project name</h2></div><button id="saveBtn" class="icon-btn" type="button" title="Save project" aria-label="Save project">♡</button></div>
+      <p id="projectDescription" class="project-description"></p><div class="chips" id="chips"></div><div class="parts-grid" id="partsGrid"></div>
+      <div class="constraint-box"><span class="small-label">Constraint</span><p id="constraintText"></p></div>
+      <div class="features-box"><span class="small-label">Extra features</span><ul id="featuresList"></ul></div>
+      <div class="result-actions"><button id="rerollBtn" class="secondary-btn" type="button">🎲 Reroll unlocked</button><button id="copyBtn" class="secondary-btn" type="button">Copy</button><button id="shareBtn" class="secondary-btn" type="button">Copy link</button></div>
+    </section>
+
+    <section class="panel saved-panel"><div class="saved-header"><div><p class="eyebrow">LOCAL STORAGE</p><h2>Saved projects</h2></div><button id="clearSavedBtn" class="ghost-btn danger" type="button">Clear</button></div><div id="savedList" class="saved-list"></div></section>
+    <footer><span>Static. Seeded. No backend. No AI.</span><span>GitHub Pages ready · ES modules</span></footer>
+  </main>
+
+  <template id="partTemplate"><article class="part-card"><div class="part-card-head"><span class="part-label"></span><div class="part-actions"><button class="tiny-btn lock-btn" type="button" title="Lock this field">🔓</button><button class="tiny-btn single-reroll-btn" type="button" title="Reroll this field">🎲</button></div></div><strong class="part-value"></strong></article></template>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
